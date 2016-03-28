@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
-export default class Playlist extends Component {
+export default class Queue extends Component {
   render() {
     console.log('playlist loaded');
     return (
-      <div>this is the playlist content</div>      
+      <div>this is the queue content</div>      
     );
   }
 }

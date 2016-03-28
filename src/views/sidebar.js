@@ -7,7 +7,7 @@ import styles from '../styles/sidebar';
 
 const navSections = [
   ['', <LogoIcon classNames={styles.icon} />, ''],
-  ['playlist', <LiveIcon classNames={styles.icon} />, '']
+  ['queue', <LiveIcon classNames={styles.icon} />, '']
 ];
 
 
