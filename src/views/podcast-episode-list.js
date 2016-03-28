@@ -25,7 +25,7 @@ class PodcastEpisodeList extends Component {
           {
             formattedEps.map((ep) => (
               <li key={ep.title} className={styles.episodeListItem} alt={ep.title}
-                onClick={() => this.props.loadPodcastEpisode(ep)}>
+                onClick={() => this.props.addEpisodeToQueue(ep)}>
                 <div>
                   {ep.title}
                 </div>
