@@ -13,6 +13,8 @@ export class Player extends Component {
       var ep = this.props.queue[0];
       this.props.loadPodcastEpisode(ep);
       this.props.removeEpisodeFromQueue(ep);
+    } else {
+      this.props.clearPodcastEpisode();
     }
   }
 
