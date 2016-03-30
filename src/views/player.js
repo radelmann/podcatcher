@@ -8,18 +8,18 @@ import styles from '../styles/player';
 
 export class Player extends Component {
 
-  trackEnd() {
-    console.log('trackend');
-    var ep = this.props.queue[0];
-    this.props.removeEpisodeFromQueue(ep);
+  episodeEnd() {
+    if (this.props.queue[0]) {
+      var ep = this.props.queue[0];
+      this.props.loadPodcastEpisode(ep);
+      this.props.removeEpisodeFromQueue(ep);
+    }
   }
 
   render(ep) {
-    ep = this.props.queue[0] || {};
+    const {title, podcastTitle, src} = this.props.player;
 
-    const {title, podcastTitle, src} = ep;
-
-    const audioEl = src ? <audio src={src} onEnded={() => this.trackEnd()} controls autoPlay /> : null;
+    const audioEl = src ? <audio src={src} onEnded={() => this.episodeEnd()} controls autoPlay /> : null;
   
     return (
       <div className={styles.playerContainer}>
@@ -34,8 +34,8 @@ export class Player extends Component {
 
 const mapStateToProps = (state) => {
   return { 
-    player : state.player, 
-    queue : state.queue 
+    queue : state.queue,
+    player : state.player
   };
 }
 
