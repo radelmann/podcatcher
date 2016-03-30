@@ -6,6 +6,14 @@ import styles from '../styles/podcast-episode-list';
 
 
 class PodcastEpisodeList extends Component {
+  itemClick(ep) {
+    //if (this.props.player) {
+    this.props.addEpisodeToQueue(ep);  
+    //} else {
+      // this.props.loadPodcastEpisode(ep);
+    //}
+  }
+
   render() {
     const {title: [podcastTitle = ''] = [], item: episodes = [], routeParams} = this.props;
 
@@ -25,7 +33,7 @@ class PodcastEpisodeList extends Component {
           {
             formattedEps.map((ep) => (
               <li key={ep.title} className={styles.episodeListItem} alt={ep.title}
-                onClick={() => this.props.addEpisodeToQueue(ep)}>
+                onClick={() => this.itemClick(ep) }>
                 <div>
                   {ep.title}
                 </div>
@@ -39,7 +47,7 @@ class PodcastEpisodeList extends Component {
 }
 
 
-const mapStateToProps = (state, {routeParams}) => state.podcasts[routeParams.podcastId] || {};
+const mapStateToProps = (state, {queue, routeParams}) => state.podcasts[routeParams.podcastId] || {};
 const mapDispatchToProps = (dispatch) => bindActionCreators(podcastActions, dispatch);
 
 export default connect(

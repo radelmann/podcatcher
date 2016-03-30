@@ -4,16 +4,21 @@ import { bindActionCreators } from 'redux';
 import * as podcastActions from  '../action-creators/podcasts';
 
 class Queue extends Component {
-  renderItem(itemData) {
+  constructor(props) {
+    super(props);
+
+    this.renderItem = this.renderItem.bind(this);
+  }
+
+  renderItem(ep) {
     return (
-      <div>{itemData.title}</div>
+      <div onClick={ () => this.props.removeEpisodeFromQueue(ep) }>{ep.title}</div>
     );
   }
 
   render() {
-    console.log('queue loaded');
     return (
-      <div>this is the queue content
+      <div>
         { this.props.queue.map(this.renderItem) }      
       </div>
     );
@@ -21,7 +26,7 @@ class Queue extends Component {
 }
 
 function mapStateToProps (state) {
-  return { queue: state.queue }; 
+  return { queue: state.queue } || {}; 
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(podcastActions, dispatch);
