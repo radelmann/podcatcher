@@ -12,14 +12,18 @@ class Queue extends Component {
 
   renderItem(ep) {
     return (
-      <div onClick={ () => this.props.removeEpisodeFromQueue(ep) }>{ep.title}</div>
+      <li >{ep.title} - <a onClick={ () => this.props.removeEpisodeFromQueue(ep) }> remove episode</a>
+      </li>
     );
   }
 
   render() {
     return (
       <div>
-        { this.props.queue.map(this.renderItem) }      
+        <h3>Podcast Queue</h3>
+        <ol>
+          { this.props.queue.map(this.renderItem) }      
+        </ol>
       </div>
     );
   }
