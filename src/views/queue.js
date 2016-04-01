@@ -37,7 +37,7 @@ class Queue extends Component {
   }
 
   render() {
-    if (Array.isArray(this.props.queue) && (this.props.queue.length>0)) { 
+    if (Array.isArray(this.props.queue) && this.props.queue.length>0) { 
       return (
         <div>
           <h3>Podcast Queue (Drag items to reorder)</h3>
