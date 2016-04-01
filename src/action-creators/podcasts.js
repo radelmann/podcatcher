@@ -1,4 +1,4 @@
-import { REMOVE_EPISODE_FROM_QUEUE, ADD_EPISODE_TO_QUEUE, ADD_PODCASTS, CLEAR_PODCAST_EPISODE, LOAD_PODCAST_EPISODE } from '../actions';
+import { MOVE_QUEUE_ITEM, REMOVE_EPISODE_FROM_QUEUE, ADD_EPISODE_TO_QUEUE, ADD_PODCASTS, CLEAR_PODCAST_EPISODE, LOAD_PODCAST_EPISODE } from '../actions';
 import fetch from 'isomorphic-fetch';
 const PODCAST_API_URL = '/api/podcasts';
 
@@ -43,5 +43,12 @@ export function removeEpisodeFromQueue(episode) {
   return {
     type: REMOVE_EPISODE_FROM_QUEUE,
     payload: episode
+  };
+}
+
+export function moveQueueItem(payload) {
+  return {
+    type: MOVE_QUEUE_ITEM,
+    payload: payload
   };
 }
