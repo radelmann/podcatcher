@@ -1,38 +1,38 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import QueueItem from './queue-list-item';
 import * as podcastActions from  '../action-creators/podcasts';
-import Sortable from 'sortablejs';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
+
+const style = {
+  width: 400
+};
+
+@DragDropContext(HTML5Backend)
 
 class Queue extends Component {
   constructor(props) {
     super(props);
 
+    this.moveItem = this.moveItem.bind(this);
     this.renderItem = this.renderItem.bind(this);
-    this.sortableGroupDecorator = this.sortableGroupDecorator.bind(this);
-    this.sortEnd = this.sortEnd.bind(this);
-  }
-  
-  sortEnd (evt) {
-    this.props.moveQueueItem({ from:evt.oldIndex, to:evt.newIndex});
   }
 
-  sortableGroupDecorator (componentBackingInstance) {
-    // check if backing instance not null
-    if (componentBackingInstance) {
-      let options = {
-        draggable: "li", // Specifies which items inside the element should be sortable
-        group: "shared",
-        onEnd: this.sortEnd
-      };
-      Sortable.create(componentBackingInstance, options);
-    }
+  moveItem(dragIndex, hoverIndex) {
+    this.props.moveQueueItem({ from:dragIndex, to:hoverIndex});
   }
 
   renderItem(ep, i) {
     return (
-      <li key={i}>{ep.title} - <a onClick={ () => this.props.removeEpisodeFromQueue(ep) }> remove episode</a>
-      </li>
+      <QueueItem 
+        key={ep.id}
+        index={i}
+        id={ep.id}
+        moveItem={this.moveItem}  
+        ep={ep}>
+      </QueueItem>
     );
   }
 
@@ -41,9 +41,9 @@ class Queue extends Component {
       return (
         <div>
           <h3>Podcast Queue (Drag items to reorder)</h3>
-          <ol className="group-list" ref={this.sortableGroupDecorator}>
+          <div style={style}>
             { this.props.queue.map(this.renderItem) }      
-          </ol>
+          </div>
         </div>
       );
     } else {

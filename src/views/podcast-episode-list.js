@@ -19,17 +19,20 @@ class PodcastEpisodeList extends Component {
 
     this.itemClick = this.itemClick.bind(this);
   }
+
   render() {
+    console.log(this.props.podcast);
     const {title: [podcastTitle = ''] = [], item: episodes = [] } = this.props.podcast;
 
     const routeParams = this.props.routeParams;
 
-    const formattedEps = episodes.map(({enclosure, title: [title]}) => {
+    const formattedEps = episodes.map(({enclosure, title: [title], guid: [guid]}) => {
       return {
         podcastTitle,
         title,
         src: enclosure[0].$.url,
-        podcastId: routeParams.podcastId
+        podcastId: routeParams.podcastId,
+        id: guid._
       };
     });
 
@@ -39,7 +42,7 @@ class PodcastEpisodeList extends Component {
         <ul className={styles.episodeList}>
           {
             formattedEps.map((ep) => (
-              <li key={ep.title} className={styles.episodeListItem} alt={ep.title}
+              <li key={ep.id} className={styles.episodeListItem} alt={ep.title}
                 onClick={() => this.itemClick(ep) }>
                 <div>
                   {ep.title}
