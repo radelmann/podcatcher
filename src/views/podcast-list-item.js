@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 class PodcastListItem extends Component {
   render() {
-    const {title, item: episodes, slug, image = [], ...data} = this.props;
+    const {title, item: episodes, slug, ...data} = this.props;
     const imgSrc  = this.props['itunes:image'][0].$.href ? this.props['itunes:image'][0].$.href : null;
 
 
