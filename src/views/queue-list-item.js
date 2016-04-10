@@ -4,6 +4,8 @@ import { DragSource, DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as podcastActions from  '../action-creators/podcasts';
+import styles from '../styles/queue-list-item';
+import { ClearIcon } from './icons'
 
 const style = {
   border: '1px dashed gray',
@@ -89,13 +91,17 @@ class QueueListItem extends Component {
   };
 
   render() {
-    const { ep, isDragging, connectDragSource, connectDropTarget } = this.props;
+    const { ep, isDragging, connectDragSource, connectDropTarget, index } = this.props;
     const opacity = isDragging ? 0 : 1;
 
     return connectDragSource(connectDropTarget(
-      <div style={{ ...style, opacity }}>
-        {ep.title} -  <a onClick={ () => this.props.removeEpisodeFromQueue(ep) }> remove episode</a>
-      </div>
+      <li className={styles.queueListItem} style={{opacity}}>
+        <img src={ep.imgSrc} className={styles.queueItemImg}/>
+        {ep.podcastTitle} - {ep.title}
+        <div className={styles.iconContainer} onClick={ () => this.props.removeEpisodeFromQueue(ep)}>
+          <ClearIcon classNames={styles.clearIcon}></ClearIcon>
+        </div>
+      </li>
     ));
   }
 }

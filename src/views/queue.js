@@ -5,10 +5,7 @@ import QueueItem from './queue-list-item';
 import * as podcastActions from  '../action-creators/podcasts';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-
-const style = {
-  width: 400
-};
+import styles from '../styles/queue';
 
 @DragDropContext(HTML5Backend)
 
@@ -39,25 +36,27 @@ class Queue extends Component {
   render() {
     if (Array.isArray(this.props.queue) && this.props.queue.length>0) { 
       return (
-        <div>
-          <h3>Podcast Queue (Drag items to reorder)</h3>
-          <div style={style}>
-            { this.props.queue.map(this.renderItem) }      
+        <div className={styles.episodeListContainer}>
+          <h2 className={styles.episodeListHeader}>Podcast Queue (Drag items to reorder)</h2>
+          <div>
+            <ol className={styles.episodeList}>
+              { this.props.queue.map(this.renderItem) }      
+            </ol>
           </div>
         </div>
       );
     } else {
       return (
-        <div>
-          <h3>Podcast Queue (Empty)</h3>
+        <div className={styles.episodeListContainer}>
+          <h2 className={styles.episodeListHeader}>Podcast Queue (Empty)</h2>
         </div>
       );
     }
   }
 }
 
-function mapStateToProps (state) {
-  return { queue: state.queue } || {}; 
+function mapStateToProps ({queue}) {
+  return { queue } || {}; 
 }
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(podcastActions, dispatch);
