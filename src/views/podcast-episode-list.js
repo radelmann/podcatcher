@@ -26,7 +26,6 @@ class PodcastEpisodeList extends Component {
   }
 
   render() {
-    console.log(this.props.podcast);
     const {description: [description=''], title: [podcastTitle = ''] = [], item: episodes = [] } = this.props.podcast;
     const routeParams = this.props.routeParams;
     const imgSrc  = this.props.podcast['itunes:image'][0].$.href ? this.props.podcast['itunes:image'][0].$.href : null;
@@ -47,7 +46,7 @@ class PodcastEpisodeList extends Component {
       <div>
         <div className={styles.episodeListHeader}>
           <img src={imgSrc} className={styles.listHeaderImg}/>
-          <h1>{podcastTitle}</h1>
+          <h2>{podcastTitle}</h2>
           <p>{description}</p>
         </div>
 
