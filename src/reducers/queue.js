@@ -2,8 +2,10 @@ import {MOVE_QUEUE_ITEM, ADD_EPISODE_TO_QUEUE, REMOVE_EPISODE_FROM_QUEUE} from '
 import update from 'react/lib/update';
 import {createReducer} from '../utils';
 
-const addEpisodeToQueue = (state, {payload}) =>
-  [ ...state, payload]
+const addEpisodeToQueue = (state, {payload}) => {
+  const find = state.find ? state.find(item => item.id === payload.id) : false;
+  return find ? state : [ ...state, payload]; 
+}  
 
 const removeEpisodeFromQueue = (state, {payload}) => 
   state.filter(item => item.id !== payload.id)
