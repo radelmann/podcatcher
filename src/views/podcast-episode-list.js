@@ -8,7 +8,7 @@ import {PlayIcon, InfoIcon, SaveIcon} from './icons';
 class PodcastEpisodeList extends Component {
   itemQueue(ep) {
     if (this.props.player.src) {
-      this.props.addEpisodeToQueue(ep);  
+      this.props.addEpisodeToQueue(ep);
     } else {
       this.props.loadPodcastEpisode(ep);
     }
@@ -30,8 +30,9 @@ class PodcastEpisodeList extends Component {
     const routeParams = this.props.routeParams;
     const imgSrc  = this.props.podcast['itunes:image'][0].$.href ? this.props.podcast['itunes:image'][0].$.href : null;
 
-    const formattedEps = episodes.map(({enclosure, title: [title], guid: [guid],description: [description]}) => {
+    const formattedEps = episodes.map(({pubDate:[pubDate], enclosure, title: [title], guid: [guid],description: [description]}) => {
       return {
+        date: new Date(pubDate).toDateString(),
         podcastTitle,
         title,
         description,
@@ -51,21 +52,26 @@ class PodcastEpisodeList extends Component {
         </div>
 
         <div className={styles.episodeListContainer}>
-          <ul className={styles.episodeList}>
+          <table className={styles.episodeList}>
+            <tbody>
             {
               formattedEps.map((ep) => (
-                <li key={ep.id} className={styles.episodeListItem} alt={ep.title}>
-                  <span onClick={() => this.itemPlay(ep) }>
+                <tr key={ep.id} className={styles.episodeListItem} alt={ep.title}>
+                  <td onClick={() => this.itemPlay(ep) }>
                     <PlayIcon classNames={styles.playIcon} />
-                  </span>
-                  <span className={styles.episodeDescription}>{ep.title}</span>
-                  <span onClick={() => this.itemQueue(ep) }>
+                  </td>
+                  <td className={styles.episodeDescription}>
+                    {ep.title}<br/>
+                    <small>{ep.date}</small> 
+                  </td>
+                  <td onClick={() => this.itemQueue(ep) }>
                     <SaveIcon classNames={styles.addIcon} />
-                  </span> 
-                </li>
+                  </td> 
+                </tr>
               ))
             }
-          </ul>
+            </tbody>
+          </table>
         </div>  
       </div>
     );
