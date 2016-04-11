@@ -36,7 +36,7 @@ export class Player extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({queue, player}) => {
   return { 
     queue,
     player
