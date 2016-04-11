@@ -37,7 +37,7 @@ class PodcastEpisodeList extends Component {
         description,
         src: enclosure[0].$.url,
         podcastId: routeParams.podcastId,
-        id: guid._,
+        id: title,
         imgSrc
       };
     });
