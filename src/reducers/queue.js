@@ -10,8 +10,6 @@ const addEpisodeToQueue = (state, {payload}) => {
 const removeEpisodeFromQueue = (state, {payload}) => 
   state.filter(item => item.id !== payload.id)
 
-//move queue item from one index to another index
-//adjust indexes accordingly
 const moveQueueItem = (state, {payload}) => {
   const dragItem = state[payload.from];
   return update(state, {
