@@ -21,13 +21,13 @@ export class Player extends Component {
   render(ep) {
     const {title, podcastTitle, src, imgSrc} = this.props.player;
     const audioEl = src ? <div className={styles.playerEl}><audio src={src} onEnded={() => this.episodeEnd()} controls autoPlay /></div> : null;
-  
+    const img = src ? <img src={imgSrc} className={styles.playerImg} /> : null;
     return (
       <div className={styles.playerContainer}>
         <div className={styles.player}>
-          <img src={imgSrc} className={styles.playerImg} />
+          {img}
           <div className={styles.playerInner}>
-            <div><small>{podcastTitle} - {title}</small></div>
+            <div><small>{podcastTitle} {title}</small></div>
             {audioEl}
           </div>
         </div>
