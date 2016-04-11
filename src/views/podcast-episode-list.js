@@ -81,7 +81,7 @@ class PodcastEpisodeList extends Component {
 
 const mapStateToProps = (state , {routeParams}) => { 
   return {
-    player,
+    player:state.player,
     podcast: state.podcasts[routeParams.podcastId] 
   } || {};
 }
