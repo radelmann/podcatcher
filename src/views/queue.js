@@ -49,8 +49,8 @@ class Queue extends Component {
       );
     } else {
       return (
-        <div className={styles.episodeListContainer}>
-          <h2 className={styles.episodeListHeader}>Podcast Queue (Empty)</h2>
+        <div className={styles.queueListContainer}>
+          <h2 className={styles.queueListHeader}>Podcast Queue (Empty)</h2>
         </div>
       );
     }
