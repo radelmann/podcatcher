@@ -88,9 +88,11 @@ class QueueListItem extends Component {
 
     return connectDragSource(connectDropTarget(
       <tr className={styles.queueListItem} style={{opacity}}>
+        <td><span className={styles.queueItemNumber}>{index+1}</span></td>
         <td><img src={ep.imgSrc} className={styles.queueItemImg}/></td>
         <td className={styles.itemDesc}>
-            {ep.podcastTitle} - {ep.title}
+            {ep.podcastTitle} - {ep.title} <br/>
+            <small>{ep.date}</small>
         </td>
         <td className={styles.clearIconCell} onClick={ () => this.props.removeEpisodeFromQueue(ep)}>
           <ClearIcon classNames={styles.clearIcon}></ClearIcon>
