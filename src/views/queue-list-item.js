@@ -7,14 +7,6 @@ import * as podcastActions from  '../action-creators/podcasts';
 import styles from '../styles/queue-list-item';
 import { ClearIcon } from './icons'
 
-const style = {
-  border: '1px dashed gray',
-  padding: '0.5rem 1rem',
-  marginBottom: '.5rem',
-  backgroundColor: 'darkgray',
-  cursor: 'move'
-};
-
 const itemSource = {
   beginDrag(props) {
     return {
@@ -95,13 +87,15 @@ class QueueListItem extends Component {
     const opacity = isDragging ? 0 : 1;
 
     return connectDragSource(connectDropTarget(
-      <li className={styles.queueListItem} style={{opacity}}>
-        <img src={ep.imgSrc} className={styles.queueItemImg}/>
-        {ep.podcastTitle} - {ep.title}
-        <div className={styles.iconContainer} onClick={ () => this.props.removeEpisodeFromQueue(ep)}>
+      <tr className={styles.queueListItem} style={{opacity}}>
+        <td><img src={ep.imgSrc} className={styles.queueItemImg}/></td>
+        <td className={styles.itemDesc}>
+            {ep.podcastTitle} - {ep.title}
+        </td>
+        <td className={styles.clearIconCell} onClick={ () => this.props.removeEpisodeFromQueue(ep)}>
           <ClearIcon classNames={styles.clearIcon}></ClearIcon>
-        </div>
-      </li>
+        </td>
+      </tr>
     ));
   }
 }

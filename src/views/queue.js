@@ -36,12 +36,14 @@ class Queue extends Component {
   render() {
     if (Array.isArray(this.props.queue) && this.props.queue.length>0) { 
       return (
-        <div className={styles.episodeListContainer}>
-          <h2 className={styles.episodeListHeader}>Podcast Queue (Drag items to reorder)</h2>
+        <div className={styles.queueListContainer}>
+          <h2 className={styles.queueListHeader}>Podcast Queue (Drag items to reorder)</h2>
           <div>
-            <ol className={styles.episodeList}>
-              { this.props.queue.map(this.renderItem) }      
-            </ol>
+            <table className={styles.queueList}>
+              <tbody>
+                { this.props.queue.map(this.renderItem) }      
+              </tbody>
+            </table>
           </div>
         </div>
       );
