@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as podcastActions from  '../action-creators/podcasts';
 import styles from '../styles/podcast-episode-list';
 import {PlayIcon, InfoIcon, SaveIcon} from './icons';
+import SearchBar from './search-bar';
 
 class PodcastEpisodeList extends Component {
   itemQueue(ep) {
@@ -26,11 +27,11 @@ class PodcastEpisodeList extends Component {
   }
 
   render() {
-    const {description: [description=''], title: [podcastTitle = ''] = [], item: episodes = [] } = this.props.podcast;
+    const {description: [description=''], title: [podcastTitle = ''] = [] } = this.props.podcast;
     const routeParams = this.props.routeParams;
     const imgSrc  = this.props.podcast['itunes:image'][0].$.href ? this.props.podcast['itunes:image'][0].$.href : null;
 
-    const formattedEps = episodes.map(({pubDate:[pubDate], enclosure, title: [title], guid: [guid],description: [description]}) => {
+    const formattedEps = this.props.episodes.map(({pubDate:[pubDate], enclosure, title: [title], guid: [guid],description: [description]}) => {
       return {
         date: new Date(pubDate).toDateString(),
         podcastTitle,
@@ -52,6 +53,7 @@ class PodcastEpisodeList extends Component {
         </div>
 
         <div className={styles.episodeListContainer}>
+          <SearchBar></SearchBar>
           <table className={styles.episodeList}>
             <tbody>
             {
@@ -78,17 +80,4 @@ class PodcastEpisodeList extends Component {
   }
 }
 
-
-const mapStateToProps = (state , {routeParams}) => { 
-  return {
-    player:state.player,
-    podcast: state.podcasts[routeParams.podcastId] 
-  } || {};
-}
-
-const mapDispatchToProps = (dispatch) => bindActionCreators(podcastActions, dispatch);
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PodcastEpisodeList);
+export default PodcastEpisodeList;

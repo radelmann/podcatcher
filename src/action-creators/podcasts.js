@@ -1,4 +1,4 @@
-import { MOVE_QUEUE_ITEM, REMOVE_EPISODE_FROM_QUEUE, ADD_EPISODE_TO_QUEUE, ADD_PODCASTS, CLEAR_PODCAST_EPISODE, LOAD_PODCAST_EPISODE } from '../actions';
+import { SET_SEARCH_TERM, MOVE_QUEUE_ITEM, REMOVE_EPISODE_FROM_QUEUE, ADD_EPISODE_TO_QUEUE, ADD_PODCASTS, CLEAR_PODCAST_EPISODE, LOAD_PODCAST_EPISODE } from '../actions';
 import fetch from 'isomorphic-fetch';
 const PODCAST_API_URL = '/api/podcasts';
 
@@ -51,4 +51,11 @@ export function moveQueueItem(payload) {
     type: MOVE_QUEUE_ITEM,
     payload: payload
   };
+}
+
+export const setSearchTerm = (searchTerm) => {
+  return {
+    type: SET_SEARCH_TERM,
+    searchTerm
+  }
 }
