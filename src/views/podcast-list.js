@@ -22,7 +22,6 @@ export class PodcastList extends Component {
 const mapStateToProps = ({podcasts}) => ({podcasts});
 const mapDispatchToProps = (dispatch) => bindActionCreators(podcastActions, dispatch);
 
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps
