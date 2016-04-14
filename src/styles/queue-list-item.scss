@@ -1,0 +1,47 @@
+:local {
+  @import 'variables';
+  .queueListItem {
+    width:100%;
+    color: white;
+    cursor: move;
+    border: 1px solid $darkest-gray;
+  }
+
+  .queueListItem td {
+    padding: .3em;
+  }
+  
+  .queueListItem:hover {
+    background-color: $darkest-gray;
+  }
+  
+  .itemDesc {
+    width: 100%;
+  }
+  
+  .queueItemNumber {
+    color: $blue;
+    font-size: 1.5em;
+    margin-left: .5em;
+  }
+
+  .queueItemImg {
+    margin-top:.3em;
+    width: 3em;
+    height: 3em;
+    fill: $blue;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+    
+  .clearIconCell {
+    cursor: pointer;
+    height: 100%;
+  }
+
+  .clearIcon {
+    width: 2em;
+    height: 1.5em;
+    fill: $blue;
+  }
+}
