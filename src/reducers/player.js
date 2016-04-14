@@ -3,7 +3,7 @@ import { createReducer } from '../utils';
 
 const loadEpisode = (state, {payload}) => ({...state, ...payload});
 
-const clearEpisode = (state) => {return {}};
+const clearEpisode = (state) => {return {};};
 
 const handlers = {
   [LOAD_PODCAST_EPISODE]: loadEpisode,

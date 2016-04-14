@@ -41,7 +41,7 @@ const mapStateToProps = ({queue, player}) => {
     queue,
     player
   };
-}
+};
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(podcastActions, dispatch);
 
