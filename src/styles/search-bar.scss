@@ -1,0 +1,28 @@
+:local {
+  @import 'variables';
+  .searchContainer {
+    clear: left;
+    width: 100%;
+  }
+
+  .searchFieldContainer {
+    width: 95%;
+    padding-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .searchInput {
+    width: 100%;
+    color: $font-dark;
+    font-size: 1em;
+    padding-top: .1em;
+    padding-bottom: .1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 2.25em;
+    background-color: $white;
+    border: solid thin $dark-gray;
+    border-radius: 5px;
+  }
+}

@@ -1,0 +1,64 @@
+:local {
+  @import 'variables';
+  .episodeListContainer {
+    padding-top:2em;
+  }
+
+  .episodeList {
+    width: 100%;
+    height: 100%;
+    color: white;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .episodeListItem td {
+    padding: .6em;
+  }
+
+  .episodeListItem {
+    width: 100%;
+    border: 1px solid $darkest-gray;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .episodeListItem:hover {
+    background-color: $darkest-gray;
+  }
+  
+  .episodeListHeader {
+    clear: left;
+    margin:.5em;
+  }
+  
+  .listHeaderImg {
+    float: left;
+    height: 10em;
+    width: 10em;
+    margin-right: 1em;
+  }
+
+  .episodeDescription {
+    width:100%;
+  }
+
+  .playIcon {
+    width: 2em;
+    height: 1.5em;
+    fill: $blue;
+    margin-bottom: -.2em;
+    margin-left: 1em;
+  }
+
+  .addIcon {
+    cursor: pointer;
+    width: 2em;
+    height: 1.5em;
+    fill: $blue;
+  }
+}

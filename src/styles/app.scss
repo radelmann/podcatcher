@@ -1,0 +1,52 @@
+@import 'variables';
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  background: black;
+  
+  a {
+    text-decoration: none;
+  }
+
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
+  font: 300 16px/22px Helvetica, Arial, sans-serif;
+
+  h1, h2, h3 {
+    font-weight: 500;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    color: $blue;
+  }
+
+  table { 
+    border-collapse: collapse; 
+  }
+}
+
+:local {
+  .layout {
+    height: 100%;
+    width: 100%;
+  }
+
+  .topLayout {
+    position: relative;
+    height: calc(100% - 5em);
+    width: 100%;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  .main {
+    height: 100%;
+    width: calc(100% - 5em);
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    overflow: scroll;
+  }
+}
