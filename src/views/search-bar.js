@@ -7,8 +7,7 @@ import { SearchIcon } from './icons';
 
 class SearchBar extends Component {
   componentWillUnmount() {
-    console.log('search cleared');
-    this.props.setSearchTerm("");   
+    this.props.setSearchTerm('');   
   }
 
   setSearchTerm(e) {

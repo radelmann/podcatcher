@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as podcastActions from  '../action-creators/podcasts';
 import styles from '../styles/queue-list-item';
-import { ClearIcon } from './icons'
+import { ClearIcon } from './icons';
 
 const itemSource = {
   beginDrag(props) {

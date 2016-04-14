@@ -5,10 +5,10 @@ import {createReducer} from '../utils';
 const addEpisodeToQueue = (state, {payload}) => {
   const find = state.find ? state.find(item => item.id === payload.id) : false;
   return find ? state : [ ...state, payload]; 
-}  
+};  
 
 const removeEpisodeFromQueue = (state, {payload}) => 
-  state.filter(item => item.id !== payload.id)
+  state.filter(item => item.id !== payload.id);
 
 const moveQueueItem = (state, {payload}) => {
   const dragItem = state[payload.from];
@@ -19,7 +19,7 @@ const moveQueueItem = (state, {payload}) => {
       ]
     }
   );
-}
+};
 
 const handlers = {
   [ADD_EPISODE_TO_QUEUE]: addEpisodeToQueue,
