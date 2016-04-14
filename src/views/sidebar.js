@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import { Link } from 'react-router';
-
-import {LogoIcon, LiveIcon} from './icons';
 import styles from '../styles/sidebar';
 
 class Sidebar extends Component {
@@ -13,18 +11,18 @@ class Sidebar extends Component {
     const queueText = queueSize===0 ? 'Q' : 'Q ('+queueSize+')'; 
 
     const navSections = [
-      ['', <LogoIcon classNames={styles.icon} />, ''],
-      ['queue', '', <span className={styles.text}>{queueText}</span> ]
+      ['', <span className={styles.text}>Home</span> ],
+      ['queue', <span className={styles.text}>{queueText}</span> ]
     ];
 
     return (
       <div className={styles.sidebarPane}>
         <ul className={styles.sidebarNav}>
           {
-            navSections.map(([iconKey, Icon, text]) => {
+            navSections.map(([key, text]) => {
               return (
-                <li key={iconKey} className={classNames([styles.sidebarNavItem, styles[`navItem${iconKey}`]])}>
-                  <Link to={`/${iconKey}`} activeClass="active">{Icon}{text}</Link>
+                <li key={key} className={classNames([styles.sidebarNavItem, styles[`navItem${key}`]])}>
+                  <Link to={`/${key}`} activeClass="active">{text}</Link>
                 </li>
               );
             })
