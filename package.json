@@ -1,7 +1,7 @@
 {
   "name": "podcatcher",
   "version": "0.0.1",
-  "description": "A fork of react-transform-boilerplate with a nano-app stacked on top of its tooling.",
+  "description": "A fork of react-transform-boilerplate with a podcatcher app stacked on top of its tooling.",
   "scripts": {
     "clean": "rimraf dist",
     "build:webpack": "NODE_ENV=production webpack --config webpack.config.prod.js",

@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "podcatcher",
-=======
-  "name": "hello-philo",
->>>>>>> 73e505ade370436dbe0142c43a50ac9b242dd111
   "version": "0.0.1",
   "dependencies": {
     "abbrev": {
