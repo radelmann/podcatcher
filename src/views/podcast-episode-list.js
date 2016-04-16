@@ -3,27 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as podcastActions from  '../action-creators/podcasts';
 import styles from '../styles/podcast-episode-list';
-import {PlayIcon, InfoIcon, SaveIcon} from './icons';
 import SearchBar from './search-bar';
+import PodcastEpisodeListItem from './podcast-episode-list-item';
 
 class PodcastEpisodeList extends Component {
-  itemQueue(ep) {
-    if (this.props.player.src) {
-      this.props.addEpisodeToQueue(ep);
-    } else {
-      this.props.loadPodcastEpisode(ep);
-    }
-  }
-  
-  itemPlay(ep) {
-    this.props.loadPodcastEpisode(ep);
-  }
-
   constructor(props) {
     super(props);
-
-    this.itemQueue = this.itemQueue.bind(this);
-    this.itemPlay = this.itemPlay.bind(this);
   }
 
   render() {
@@ -58,18 +43,7 @@ class PodcastEpisodeList extends Component {
             <tbody>
             {
               formattedEps.map((ep) => (
-                <tr key={ep.id} className={styles.episodeListItem} alt={ep.title}>
-                  <td onClick={() => this.itemPlay(ep) }>
-                    <PlayIcon classNames={styles.playIcon} />
-                  </td>
-                  <td className={styles.episodeDescription}>
-                    {ep.title}<br/>
-                    <small>{ep.date}</small> 
-                  </td>
-                  <td onClick={() => this.itemQueue(ep) }>
-                    <SaveIcon classNames={styles.addIcon} />
-                  </td> 
-                </tr>
+                <PodcastEpisodeListItem key={ep.id} ep={ep} />
               ))
             }
             </tbody>
