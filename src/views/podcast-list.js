@@ -11,17 +11,11 @@ export class PodcastList extends Component {
     const { podcasts = [] } = this.props;
     const titles = Object.keys(podcasts);
     return (
-      <div>
-        <SearchBar></SearchBar>
-        <div>
-          
-          <ul className={styles.podcastList}>
-            {
-              titles.map(title => <Podcast key={title} {...podcasts[title]}  />)
-            }
-          </ul>
-        </div>
-      </div>
+      <ul className={styles.podcastList}>
+        {
+          titles.map(title => <Podcast key={title} {...podcasts[title]}  />)
+        }
+      </ul>
     );
   }
 }
